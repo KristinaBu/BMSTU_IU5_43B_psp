@@ -11,10 +11,10 @@
             display: flex;
             justify-content: center; /* Пункт 10 */
             align-items: center; /* Пункт 10 */
-            height: 100vh;
+            height: 100vh;  /* vh - относительная ед изменения, в отличие от рх */
             margin: 0;
             background-image:
-                    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  /* для затемнения фона */
                     url('background.jpg'); /* Пункт 15 */
         }
 
@@ -77,6 +77,8 @@
             background: #615dcc; /* Пункт 12 */
         }
 
+        /* Для темной темы */
+
         body.dark-theme {
             background-color: #2b2b2b; /* Пункт 12 */
             color: #fff; /* Пункт 12 */
@@ -112,6 +114,7 @@
             background: #3d6fb4; /* Пункт 12 */
         }
 
+        /* Цвет выделения надписи */
 
         mark {
             background-color: #6c9cbe;
@@ -155,11 +158,13 @@
             <button id="btn_op_equal" class="my-btn primary execute">=</button>
         </div>
     </div>
+
+    <!-- Объединенный div для того, чтобы кнопки были на одном уровне-->
     <div>
         <button id="themeButton" class="my-btn theme">тема</button>
-
-        <button id="githubButton" class="my-btn theme"><a href="#" target="_blank">GitHub</a></button>
+        <button id="githubButton" class="my-btn theme"><a href="https://github.com/KristinaBu/BMSTU_IU5_43B_psp/tree/master" target="_blank">GitHub</a></button>
     </div>
+
     <div>
         <select id="dropdown" class="my-btn theme">
             <option value="option1"> ! </option>
@@ -167,22 +172,17 @@
         </select>
     </div>
 
-
-
     <details> <!-- Пункт 18 -->
         <summary>Автор</summary>
         <p>ФИО Буйдина Кристина Анатольевна</p>
         <summary>Группа ИУ5</summary>
         <p>Номер группы 43Б</p>
     </details>
+
     <p>Цель ЛР: <mark>знакомство</mark> с <mark>HTML</mark> и <mark>CSS</mark>.</p> <!-- Пункт 19 -->
 
     <p>ЛР выполнена Буйдиной Кристиной Анатольевной</p> <!-- Пункт 9 -->
-    <script>
-        document.getElementById('themeButton').addEventListener('click', function() {
-            document.body.classList.toggle('dark-theme');
-        });
-    </script>
+
 </div>
 </body>
 </html>
