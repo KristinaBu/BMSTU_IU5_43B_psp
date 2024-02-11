@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+    <style>
+        body {
+            background-color: #2b2b2b; /* Пункт 2 */
+            color: #fff; /* Пункт 1 */
+            display: flex;
+            justify-content: center; /* Пункт 10 */
+            align-items: center; /* Пункт 10 */
+            height: 100vh;
+            margin: 0;
+            background-image:
+                    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                    url('background.jpg'); /* Пункт 15 */
+        }
+
+        .my-btn {
+            margin-right: 5px;
+            margin-top: 5px;
+            width: 50px;
+            height: 50px;
+            border: none; /* Пункт 3 */
+            background: #bba4d7; /* Пункт 1 */
+            /* color: white;  Пункт 1 */
+            color: #000; /* Пункт 14 */
+            font-size: 1.5rem; /* Пункт 6 */
+            font-family: 'Courier New', Courier, monospace; /* Пункт 6 */
+            /* font-weight: bold; Пункт 7 */
+            font-weight: normal; /* Пункт 13 */
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .my-btn:hover {
+            background: #aa88d3; /* Пункт 8 */
+        }
+
+        .my-btn:active {
+            filter: brightness(130%);
+        }
+
+        .my-btn.primary {
+            background: #b26acb; /* Пункт 1 */
+        }
+
+        .my-btn.secondary {
+            background: #a63acc; /* Пункт 1 */
+        }
+
+        .my-btn.execute {
+            width: 109px;
+        }
+
+        .result {
+            width: 220px; /* Пункт 11 */
+            height: 100px; /* Пункт 11 */
+            margin-bottom: 15px;
+            padding-right: 10px;
+            border-radius: 10px; /* Пункт 5 */
+            background: rgb(255, 213, 247);
+            text-align: right;
+            color: #615dcc; /* Пункт 4 */
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .my-btn.theme {
+            width: 109px;
+            border-radius: 34px;
+            margin-top: 15px;
+            color: white;
+            background: #615dcc; /* Пункт 12 */
+        }
+
+        body.dark-theme {
+            background-color: #2b2b2b; /* Пункт 12 */
+            color: #fff; /* Пункт 12 */
+        }
+
+        body.dark-theme .my-btn {
+            background: #4a4a4a; /* Пункт 12 */
+            color: #fff; /* Пункт 12 */
+        }
+
+        body.dark-theme .my-btn:hover {
+            background: #6a6a6a; /* Пункт 12 */
+        }
+
+        body.dark-theme .my-btn.primary {
+            background: #3d6fb4; /* Пункт 12 */
+        }
+
+        body.dark-theme .my-btn.secondary {
+            background: #757575; /* Пункт 12 */
+        }
+
+        body.dark-theme .result {
+            background: #4a4a4a; /* Пункт 12 */
+            color: #fff; /* Пункт 12 */
+        }
+
+        body.dark-theme .theme {
+            width: 109px;
+            border-radius: 34px;
+            margin-top: 15px;
+            color: white;
+            background: #3d6fb4; /* Пункт 12 */
+        }
+
+
+        mark {
+            background-color: #6c9cbe;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="result" class="result">
+        0
+    </div>
+    <div>
+        <div>
+            <button id="btn_op_clear" class="my-btn secondary">C</button>
+            <button id="btn_op_sign" class="my-btn secondary">+/-</button>
+            <button id="btn_op_percent" class="my-btn secondary">%</button>
+            <button id="btn_op_div" class="my-btn primary">/</button>
+        </div>
+        <div>
+            <button id="btn_digit_7" class="my-btn">7</button>
+            <button id="btn_digit_8" class="my-btn">8</button>
+            <button id="btn_digit_9" class="my-btn">9</button>
+            <button id="btn_op_mult" class="my-btn primary">x</button>
+        </div>
+        <div>
+            <button id="btn_digit_4" class="my-btn">4</button>
+            <button id="btn_digit_5" class="my-btn">5</button>
+            <button id="btn_digit_6" class="my-btn">6</button>
+            <button id="btn_op_minus" class="my-btn primary">-</button>
+        </div>
+        <div>
+            <button id="btn_digit_1" class="my-btn">1</button>
+            <button id="btn_digit_2" class="my-btn">2</button>
+            <button id="btn_digit_3" class="my-btn">3</button>
+            <button id="btn_op_plus" class="my-btn primary">+</button>
+        </div>
+        <div>
+            <button id="btn_digit_0" class="my-btn">0</button>
+            <button id="btn_digit_dot" class="my-btn">.</button>
+            <button id="btn_op_equal" class="my-btn primary execute">=</button>
+        </div>
+    </div>
+    <div>
+        <button id="themeButton" class="my-btn theme">тема</button>
+
+        <button id="githubButton" class="my-btn theme"><a href="#" target="_blank">GitHub</a></button>
+    </div>
+    <div>
+        <select id="dropdown" class="my-btn theme">
+            <option value="option1"> ! </option>
+            <option value="option2"> ? </option>
+        </select>
+    </div>
+
+
+
+    <details> <!-- Пункт 18 -->
+        <summary>Автор</summary>
+        <p>ФИО Буйдина Кристина Анатольевна</p>
+        <summary>Группа ИУ5</summary>
+        <p>Номер группы 43Б</p>
+    </details>
+    <p>Цель ЛР: <mark>знакомство</mark> с <mark>HTML</mark> и <mark>CSS</mark>.</p> <!-- Пункт 19 -->
+
+    <p>ЛР выполнена Буйдиной Кристиной Анатольевной</p> <!-- Пункт 9 -->
+    <script>
+        document.getElementById('themeButton').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+        });
+    </script>
+</div>
+</body>
+</html>
