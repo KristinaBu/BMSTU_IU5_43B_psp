@@ -1,0 +1,164 @@
+:root {
+    --btn_count: 5;
+}
+body {
+    background-color: #2b2b2b; /* Пункт 2 */
+    color: #fff; /* Пункт 1 */
+    display: flex;
+    justify-content: center; /* Пункт 10 */
+    align-items: center; /* Пункт 10 */
+    height: 100vh;  /* vh - относительная ед изменения, в отличие от рх */
+    margin: 0;
+    background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  /* для затемнения фона */
+            url('background.jpg'); /* Пункт 15 */
+}
+
+.my-btn {
+    margin-right: 5px;
+    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+    border: none; /* Пункт 3 */
+    background: #bba4d7; /* Пункт 1 */
+    /* color: white;  Пункт 1 */
+    color: #000; /* Пункт 14 */
+    font-size: 1.5rem; /* Пункт 6 */
+    font-family: 'Courier New', Courier, monospace; /* Пункт 6 */
+    /* font-weight: bold; Пункт 7 */
+    font-weight: normal; /* Пункт 13 */
+    cursor: pointer;
+    user-select: none;
+}
+
+.my-btn:hover {
+    background: #aa88d3; /* Пункт 8 */
+}
+
+.my-btn:active {
+    filter: brightness(130%);
+}
+
+.my-btn.primary {
+    background: #b26acb; /* Пункт 1 */
+}
+
+.my-btn.secondary {
+    background: #a63acc; /* Пункт 1 */
+}
+
+.my-btn.execute {
+    width: 109px;
+}
+
+.result {
+    width: calc(var(--btn_count) * 55px); /* Пункт 11 */
+    height: 40px; /* Пункт 11 */
+    margin-bottom: 15px;
+    padding-right: 10px;
+    border-radius: 10px; /* Пункт 5 */
+    background: rgb(255, 213, 247);
+    text-align: right;
+    color: #7c79ce; /* Пункт 4 */
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    filter: brightness(85%);
+
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.mathexpression {
+    width: calc(var(--btn_count) * 55px); /* Пункт 11 */
+    height: 100px; /* Пункт 11 */
+    margin-bottom: 10px;
+    padding-right: 10px;
+    border-radius: 10px; /* Пункт 5 */
+    background: rgb(255, 213, 247);
+    text-align: right;
+    color: #615dcc; /* Пункт 4 */
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+
+    overflow-y: auto; /* Добавляет полосы прокрутки, если содержимое выходит за пределы элемента */
+    word-wrap: break-word; /* Переносит слова на новую строку, если они не умещаются в текущей строке */
+    /*  white-space: nowrap;Предотвращает перенос текста на новую строку */
+}
+
+.my-btn.theme {
+    width: 80px;
+    border-radius: 34px;
+    margin-top: 15px;
+    color: white;
+    background: #615dcc; /* Пункт 12 */
+}
+
+.my-btn.themeResult {
+    width: 80px;
+    border-radius: 34px;
+    margin-top: 15px;
+    color: white;
+    background: #615dcc;
+}
+
+.my-btn.gitTheme {
+    width: 110px;
+    border-radius: 34px;
+    margin-top: 15px;
+    color: white;
+    background: #615dcc;
+}
+
+/* Для темной темы */
+
+body.dark-theme {
+    background-color: #2b2b2b; /* Пункт 12 */
+    color: #fff; /* Пункт 12 */
+}
+
+body.dark-theme .my-btn {
+    background: #4a4a4a; /* Пункт 12 */
+    color: #fff; /* Пункт 12 */
+}
+
+body.dark-theme .my-btn:hover {
+    background: #6a6a6a; /* Пункт 12 */
+}
+
+body.dark-theme .my-btn.primary {
+    background: #3d6fb4; /* Пункт 12 */
+}
+
+body.dark-theme .my-btn.secondary {
+    background: #757575; /* Пункт 12 */
+}
+
+body.dark-theme .result {
+    background: #4a4a4a; /* Пункт 12 */
+    color: #fff; /* Пункт 12 */
+}
+
+body.dark-theme .mathexpression {
+    background: #4a4a4a; /* Пункт 12 */
+    color: #fff; /* Пункт 12 */
+}
+
+body.dark-theme .theme {
+    color: white;
+    background: #3d6fb4; /* Пункт 12 */
+}
+
+.result.dark-theme {
+    background: #4a4a4a; /* Пункт 12 */
+    color: #fff; /* Пункт 12 */
+}
+
+
+/* Цвет выделения надписи */
+
+mark {
+    background-color: #6c9cbe;
+    color: black;
+}
