@@ -11,7 +11,7 @@ body {
     margin: 0;
     background-image:
             linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  /* для затемнения фона */
-            url('background.jpg'); /* Пункт 15 */
+            url('./background.jpg'); /* Пункт 15 */
 }
 
 .my-btn {
