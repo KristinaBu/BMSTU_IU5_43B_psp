@@ -15,7 +15,8 @@ export class ProductPage {
                 id: 1,
                 src: "https://smart-estet.ru/datas/users/1-1680492539_8771e66d-8dd9-4e1a-a0c2-ad53e803b50d.jpeg",
                 title: `Версия ${this.id} в разработке...`,
-                text: "Дизайн"
+                text: "Дизайн",
+                counter_: 0
             }
 
     }

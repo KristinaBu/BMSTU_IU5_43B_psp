@@ -27,28 +27,36 @@ export class MainPage {
                 id: 1,
                 src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCow3PQqsUrDHkH6yf2aQt9jKFh02CxXBqc3ageziEXA&s",
                 title: "Дизайн",
-                text: "Сложность 1"
+                text: "Сложность 1",
+                counter: 0
             },
             {
                 id: 2,
                 src: "https://mobile.photoprocenter.ru/files/201503021708115974_0.jpg",
                 title: "Дизайн",
-                text: "Сложность 2"
+                text: "Сложность 2",
+                counter: 0
             },
             {
                 id: 3,
                 src: "https://images.satu.kz/142470648_fon-bumazhnyj-superior.jpg",
                 title: "Дизайн",
-                text: "Сложность 3"
+                text: "Сложность 3",
+                counter: 0
             },
         ]
     }
+
+
     clickCard(e) {
         const cardId = e.target.dataset.id
+        //e.target.dataset.counter_  = e.target.dataset.counter_ + 1
 
         const productPage = new ProductPage(this.parent, cardId)
+
         productPage.render()
     }
+
 
 
     render() {

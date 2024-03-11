@@ -23,8 +23,6 @@ window.onload = function() {
         }
     });
 
-
-
     function onDigitButtonClicked(digit) {
         if (!selectedOperation) {
             if ((digit != '.') || (digit == '.' && !a.includes(digit))) {
@@ -39,13 +37,13 @@ window.onload = function() {
         }
     }
 
-// устанавка колбек-функций на кнопки циферблата по событию нажатия
+/*// устанавка колбек-функций на кнопки циферблата по событию нажатия
     digitButtons.forEach(button => {
         button.onclick = function () {
             const digitValue = button.innerHTML
             onDigitButtonClicked(digitValue)
         }
-    });
+    });*/
 
     // установка колбек-функций для кнопок операций
     document.getElementById("btn_op_mult").onclick = function () {
@@ -109,8 +107,6 @@ window.onload = function() {
         inputElement.innerHTML = a
     }
 
-
-
 // кнопка очищения
     document.getElementById("btn_op_clear").onclick = function () {
         a = ''
@@ -148,7 +144,6 @@ window.onload = function() {
         }
         // З Знака после запятой без незначащих нулей
         expressionResult = parseFloat(expressionResult.toFixed(3))
-
 
         a = expressionResult.toString()
         b = ''

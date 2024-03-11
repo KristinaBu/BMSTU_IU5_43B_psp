@@ -30,3 +30,5 @@ const rle = (input) => {
     }
     return resultArray.join('');
 }
+
+console.log(rle("AAAHQQQ"))
