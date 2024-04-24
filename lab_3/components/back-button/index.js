@@ -1,4 +1,3 @@
-
 export class BackButtonComponent {
     constructor(parent) {
         this.parent = parent;

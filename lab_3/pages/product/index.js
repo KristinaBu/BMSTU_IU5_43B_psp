@@ -1,10 +1,6 @@
+import {ProductComponent} from "../../components/product";
 import {BackButtonComponent} from "../../components/back-button";
 import {MainPage} from "../main";
-
-
-import {ProductComponent} from "../../components/product";
-import {urls} from "../../modules/urls";
-import {ajax} from "../../modules/ajax";
 
 export class ProductPage {
     constructor(parent, id) {
@@ -13,36 +9,23 @@ export class ProductPage {
     }
 
     getData() {
-        ajax.post(urls.getUserInfo(this.id), (data) => {
-            this.renderData(data.response)
-        })
-    }
-
-    renderData(data) {
-        const product = new ProductComponent(this.pageRoot)
-        product.render(data) // передать data напрямую, без использования [0]
+        return {
+            id: 1,
+            src: "https://i.pinimg.com/originals/c9/ea/65/c9ea654eb3a7398b1f702c758c1c4206.jpg",
+            title: `Акция ${this.id}`,
+            text: "Такой акции вы еще не видели"
+        }
     }
 
     get pageRoot() {
         return document.getElementById('product-page')
     }
 
-    getHTML(data) {
+    getHTML() {
         return (
             `
-            <div class="card mb-3" style="width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="${data.photo_400_orig}" class="img-fluid" alt="картинка">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">${data.first_name} ${data.last_name}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `
+                <div id="product-page"></div>
+            `
         )
     }
 
@@ -53,12 +36,14 @@ export class ProductPage {
 
     render() {
         this.parent.innerHTML = ''
-       //  const html = this.getHTML()
-        // this.parent.insertAdjacentHTML('beforeend', html)
+        const html = this.getHTML()
+        this.parent.insertAdjacentHTML('beforeend', html)
 
         const backButton = new BackButtonComponent(this.pageRoot)
         backButton.render(this.clickBack.bind(this))
 
-        this.getData()
+        const data = this.getData()
+        const stock = new ProductComponent(this.pageRoot)
+        stock.render(data)
     }
 }
