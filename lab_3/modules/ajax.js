@@ -1,7 +1,9 @@
+import { urls } from './urls.js';
+
 class Ajax {
     post(url, callback) {
         let xhr = new XMLHttpRequest()
-        xhr.open('POST', getUrl(url))
+        xhr.open('POST', url) // Используйте переданный URL напрямую
         xhr.send()
 
         xhr.onreadystatechange = () => {
