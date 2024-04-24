@@ -6,12 +6,14 @@ class Urls {
         this.commonInfo = `access_token=${accessToken}&v=${version}`
     }
 
-    getUserInfo(userId) {
-        return `${this.url}/users.get?user_ids=${userId}&fields=photo_400_orig&${this.commonInfo}`
-    }
 
-    getGroupMembers(groupId) {
-        return `${this.url}/groups.getMembers?group_id=${groupId}&fields=photo_400_orig&${this.commonInfo}`
+        getUserInfo(userId) {
+            return `${this.url}/users.get?user_ids=${userId}&fields=photo_400_orig,about,city,contacts,education,sex,status,online&${this.commonInfo}`
+        }
+
+
+    getGroupMembers(groupId, sort) {
+        return `${this.url}/groups.getMembers?group_id=${groupId}&fields=photo_400_orig&sort=${sort}&${this.commonInfo}`;
     }
 }
 
