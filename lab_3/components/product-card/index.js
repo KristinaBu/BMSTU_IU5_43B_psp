@@ -34,7 +34,7 @@ export class ProductCardComponent {
     addListeners(data, listener) {
         const button = document.getElementById(`click-card-${data.id}`);
         button.addEventListener("click", (e) => {
-            // Увеличиваем счетчик и сохраняем его в localStorage
+            // счетчик и localStorage
             data.counter = parseInt(localStorage.getItem(`counter-${data.id}`) || "0") + 1;
             localStorage.setItem(`counter-${data.id}`, data.counter);
 
@@ -56,7 +56,7 @@ export class ProductCardComponent {
     }
 
     render(data, listener) {
-        // Загружаем счетчик из localStorage перед рендерингом
+        // localStorage перед рендерингом
         data.counter = parseInt(localStorage.getItem(`counter-${data.id}`) || "0");
 
         const html = this.getHTML(data);

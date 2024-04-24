@@ -27,5 +27,7 @@ export class ProductComponent {
     render(data) {
         const html = this.getHTML(data)
         this.parent.insertAdjacentHTML('beforeend', html)
+
+
     }
 }

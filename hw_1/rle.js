@@ -31,4 +31,37 @@ const rle = (input) => {
     return resultArray.join('');
 }
 
-console.log(rle("AAAHQQQ"))
+console.log(rle("AABBBL"))
+// reduce, map, filter
+// comments.filter((comment) => comment.text.match(/:)/));
+
+//[1,1,1].map((num) => 5);
+
+// comments.map((comment) => comment.author.Name);
+
+
+const rleMap = (input) => {
+    if(!(input instanceof String) && (typeof input !== 'string')){
+        throw new Error("На вход должна подаваться строка");
+    }
+    let counter = 0;
+    let prev = input[0];
+    const resultArray = [...input].map((currentValue) => {
+        if(currentValue === prev){
+            counter++;
+            return '';
+        }
+        else{
+            let result = prev +  (counter > 1 ? counter : '');
+            counter = 1;
+            prev = currentValue;
+            return result;
+        }
+    });
+    if(counter > 0){
+        resultArray.push(prev + (counter > 1 ? counter : ''));
+    }
+    return resultArray.reduce((accumulator, currentValue) => accumulator + currentValue, '');
+}
+
+console.log(rleMap("AABBBL"))

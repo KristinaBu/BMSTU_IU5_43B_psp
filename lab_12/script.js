@@ -158,9 +158,11 @@ window.onload = function() {
         function() {
             document.getElementById('result').classList.toggle('dark-theme');
         });
+
+    document.getElementById('themeButton').addEventListener(
+        'click',
+        function() {
+            document.body.classList.toggle('dark-theme');
+        });
 };
-document.getElementById('themeButton').addEventListener(
-    'click',
-    function() {
-        document.body.classList.toggle('dark-theme');
-    });
+

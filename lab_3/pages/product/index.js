@@ -1,8 +1,8 @@
-import {BackButtonComponent} from "../../components/back-button/index.js";
-import {MainPage} from "../main/index.js";
+import {BackButtonComponent} from "../../components/back-button";
+import {MainPage} from "../main";
 
 
-import {ProductComponent} from "../../components/product/index.js";
+import {ProductComponent} from "../../components/product";
 
 export class ProductPage {
     constructor(parent, id) {
@@ -53,5 +53,8 @@ export class ProductPage {
         const backButton = new BackButtonComponent(this.pageRoot)
         backButton.render(this.clickBack.bind(this))
 
+
+
+        document.getElementById("next-button").addEventListener("click", this.clickNext.bind(this));
     }
 }
