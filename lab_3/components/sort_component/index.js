@@ -6,11 +6,8 @@ export class SortComponent {
 
     render() {
         const html = `
-
             <select id="sort-select">
-                <option value="id_asc">ID (по возрастанию)</option>
-                <option value="id_desc">ID (по убыванию)</option>
-                // добавьте другие опции сортировки по желанию
+                <option value="female">Женский</option>
             </select>
         `;
         this.parent.insertAdjacentHTML('beforeend', html);

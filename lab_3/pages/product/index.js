@@ -10,10 +10,25 @@ export class ProductPage {
         this.id = id
     }
 
-    getData() {
+    /*getData() {
         ajax.post(urls.getUserInfo(this.id), (data) => {
             this.renderData(data.response)
         })
+    }*/
+
+/*    async getData() {
+        const data = await ajax.post(urls.getUserInfo(this.id));
+        this.renderData(data.response);
+    }*/
+
+    getData() {
+        // теперь тут используем метод get. this id - это id пользователя
+        ajax.get(urls.getUserInfo(this.id)).then(data => {
+            // передаем в renderData только response из полученного объекта
+            this.renderData(data.response);
+        }).catch(error => {
+            console.error('There was a problem with the fetch operation: ', error);
+        });
     }
 
     renderData(item) {

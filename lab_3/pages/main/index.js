@@ -11,11 +11,27 @@ export class MainPage {
         this.parent = parent;
         this.sort = 'id_asc';
     }
-
+/*
     getData() {
         ajax.post(urls.getGroupMembers(groupId, this.sort), (data) => {
             this.renderData(data.response.items)
         })
+    }*/
+
+/*    async getData() {
+        const data = await ajax.post(urls.getGroupMembers(groupId, this.sort));
+        this.renderData(data.response.json().body);
+        // this.renderData(data.response.items);
+    }*/
+
+    getData(){
+        // а тут this это объект класса MainPage
+        ajax.get(urls.getGroupMembers(groupId, this.sort)).then(data => {
+            // items - это массив объектов пользователей
+            this.renderData(data.response.items)
+        }).catch(error => {
+            console.error('There was a problem with the fetch operation: ', error);
+        });
     }
 
     get pageRoot() {
@@ -38,9 +54,14 @@ export class MainPage {
     }
 
     renderData(items) {
+        // перед рендером очищаем контейнер
         const productContainer = document.getElementById('product-container');
         productContainer.innerHTML = '';
-        items.forEach((item) => {
+
+        // отфильтровать элементы, оставив только женский пол
+        const femaleItems = items.filter(item => item.sex === 1);
+
+        femaleItems.forEach((item) => {
             const productCard = new ProductCardComponent(productContainer)
             productCard.render(item, this.clickCard.bind(this))
         })

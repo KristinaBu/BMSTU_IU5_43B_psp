@@ -13,7 +13,7 @@ class Urls {
 
 
     getGroupMembers(groupId, sort) {
-        return `${this.url}/groups.getMembers?group_id=${groupId}&fields=photo_400_orig&sort=${sort}&${this.commonInfo}`;
+        return `${this.url}/groups.getMembers?group_id=${groupId}&fields=photo_400_orig,sex&sort=${sort}&${this.commonInfo}`;
     }
 }
 
