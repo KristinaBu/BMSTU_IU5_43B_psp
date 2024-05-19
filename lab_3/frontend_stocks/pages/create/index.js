@@ -1,3 +1,8 @@
+import {MainPage} from "../main";
+import {BackButtonComponent} from "../../components/back-button";
+import {urls} from "../../modules/urls.js";
+import {ajax} from "../../modules/ajax.js";
+
 export class CreateProductPage {
     constructor(parent) {
         this.parent = parent;
@@ -31,6 +36,12 @@ export class CreateProductPage {
         )
     }
 
+    clickBack() {
+        const mainPage = new MainPage(this.parent)
+        mainPage.render()
+    }
+
+    //  метод будет вызван при отправке формы
     handleSubmit(e) {
         e.preventDefault()
 
@@ -38,14 +49,30 @@ export class CreateProductPage {
         const text = document.getElementById('product-text').value
         const src = document.getElementById('product-src').value
 
-        // Here you can handle the new product data, for example, send it to the server
-        console.log({ title, text, src })
+        const data = { title, text, src };
+
+        //  POST-запрос на сервер
+        ajax.post(urls.addStock(), data)
+            .then(response => {
+                if (response && response.success) {
+                    //  сервер вернул успех,  обратно на главную страницу
+                    const mainPage = new MainPage(this.parent)
+                    mainPage.render()
+                    console.log('Card created successfully');
+                } else {
+                    console.log('Error creating card:');
+                }
+            });
     }
 
     render() {
         this.parent.innerHTML = ''
         const html = this.getHTML()
         this.parent.insertAdjacentHTML('beforeend', html)
+
+
+        const backButton = new BackButtonComponent(this.pageRoot)
+        backButton.render(this.clickBack.bind(this))
 
         document.getElementById('create-product-form').addEventListener('submit', this.handleSubmit.bind(this))
     }

@@ -1,7 +1,10 @@
-import {ProductCardComponent} from "../../components/product-card";
+
 import {ProductPage} from "../product";
 import {CreateButtonComponent} from "../../components/create-button";
 import {CreateProductPage} from "../create";
+import {urls} from "../../modules/urls.js";
+import {ajax} from "../../modules/ajax.js";
+import {ProductCardComponent} from "../../components/product-card";
 
 
 export class MainPage {
@@ -22,27 +25,41 @@ export class MainPage {
         )
     }
 
+
     getData() {
-        return [
-            {
-                id: 1,
-                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCow3PQqsUrDHkH6yf2aQt9jKFh02CxXBqc3ageziEXA&s",
-                title: "Дизайн",
-                text: "Сложность 1"
-            },
-            {
-                id: 2,
-                src: "https://mobile.photoprocenter.ru/files/201503021708115974_0.jpg",
-                title: "Дизайн",
-                text: "Сложность 2"
-            },
-            {
-                id: 3,
-                src: "https://images.satu.kz/142470648_fon-bumazhnyj-superior.jpg",
-                title: "Дизайн",
-                text: "Сложность 3"
-            },
-        ]
+        ajax.get(urls.getStocks())
+            .then(data => {
+                this.renderData(data)
+            })
+    }
+
+
+    async deleteStock(event) {
+        const id = event.target.dataset.id;
+        try {
+            const response = await ajax.delete(urls.deleteStock(id));
+            if (!response.ok || !response) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+        } catch (error) {
+            console.error('There was a problem with the fetch operation: ', error);
+        }
+        // релоад страницы, чтоб не вручную
+        location.reload();
+    }
+
+
+
+    renderData(items) {
+        this.pageRoot.innerHTML = '';
+
+        const createButton = new CreateButtonComponent(this.pageRoot, this.clickCreate.bind(this))
+        createButton.render()
+
+        items.forEach((item) => {
+            const card = new ProductCardComponent(this.pageRoot);
+            card.render(item, this.clickCard.bind(this), this.deleteStock.bind(this));
+        });
     }
 
     clickCreate() {
@@ -63,14 +80,8 @@ export class MainPage {
         const html = this.getHTML()
         this.parent.insertAdjacentHTML('beforeend', html)
 
-        const createButton = new CreateButtonComponent(this.pageRoot, this.clickCreate.bind(this))
-        createButton.render()
 
-        const data = this.getData()
-        data.forEach((item) => {
-            const productCard = new ProductCardComponent(this.pageRoot)
-            productCard.render(item, this.clickCard.bind(this))
-            productCard.initializePopover()
-        })
+
+        this.getData()
     }
 }

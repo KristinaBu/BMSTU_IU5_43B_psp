@@ -3,6 +3,7 @@ const express = require('express');
 const stocks = require('./internal/stocks');
 
 const app = express();
+const path = require('path');
 
 const host = 'localhost';
 const port = 8000;
@@ -10,6 +11,9 @@ const port = 8000;
 app.use(express.json());
 
 app.use('/stocks', stocks);
+
+// Указываем Express обслуживать статические файлы из директории 'public'
+app.use(express.static(path.join(__dirname, 'frontend_stocks')));
 
 app.listen(port, host, () => {
     console.log(`Сервер запущен по адресу http://${host}:${port}`);

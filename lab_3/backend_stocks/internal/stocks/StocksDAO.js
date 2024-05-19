@@ -13,6 +13,17 @@ class StockDAO {
         this.text = text;
     }
 
+    static generateNewId(stocks) {
+        // массив акций пуст, возвращаем 1
+        if (stocks.length === 0) {
+            return 1;
+        }
+
+        // смотрим по последнему id
+        const lastStockId = stocks[stocks.length - 1].id;
+        return lastStockId + 1;
+    }
+
     static _validateId(id) {
         const numberId = Number.parseInt(id);
         if (Number.isNaN(numberId)) {
@@ -55,9 +66,12 @@ class StockDAO {
     }
 
     static insert(stock) {
+        // временная неоптимизация :D
+        const stocks = StocksRepository.read();
+        stock.id = this.generateNewId(stocks);
         this._validate(stock);
 
-        const stocks = StocksRepository.read();
+
         StocksRepository.write([...stocks, stock]);
 
         return new this(stock.id, stock.src, stock.title, stock.text);
