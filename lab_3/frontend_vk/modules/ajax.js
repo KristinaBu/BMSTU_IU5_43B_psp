@@ -14,7 +14,7 @@
 }
 */
 
-/*
+
 class Ajax {
     // метод get для получения данных
     async get(url) {
@@ -34,9 +34,9 @@ class Ajax {
 }
 
 
-//export const ajax = new Ajax();
+export const ajax = new Ajax();
 
-*/
+
 
 /*
 class Ajax {

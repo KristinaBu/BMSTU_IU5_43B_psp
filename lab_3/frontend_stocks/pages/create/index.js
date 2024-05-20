@@ -18,18 +18,18 @@ export class CreateProductPage {
             <div id="create-product-page">
                 <form id="create-product-form">
                     <div class="mb-3">
-                        <label for="product-title" class="form-label">Title</label>
+                        <label for="product-title" class="form-label">Заголовок</label>
                         <input type="text" class="form-control" id="product-title" required>
                     </div>
                     <div class="mb-3">
-                        <label for="product-text" class="form-label">Text</label>
+                        <label for="product-text" class="form-label">Основной текст</label>
                         <input type="text" class="form-control" id="product-text" required>
                     </div>
                     <div class="mb-3">
-                        <label for="product-src" class="form-label">Image URL</label>
+                        <label for="product-src" class="form-label">URL изображения</label>
                         <input type="text" class="form-control" id="product-src" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">Создать</button>
                 </form>
             </div>
             `

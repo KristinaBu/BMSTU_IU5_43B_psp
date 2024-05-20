@@ -49,7 +49,6 @@ export class MainPage {
     }
 
 
-
     renderData(items) {
         this.pageRoot.innerHTML = '';
 
@@ -79,7 +78,6 @@ export class MainPage {
         this.parent.innerHTML = ''
         const html = this.getHTML()
         this.parent.insertAdjacentHTML('beforeend', html)
-
 
 
         this.getData()

@@ -7,8 +7,8 @@ export class CreateButtonComponent {
     getHTML() {
         return (
             `
-            <button id="create-button" class="btn btn-primary">Create Product</button>
-            `
+        <button id="create-button" class="btn btn-primary" style="width: 100px; height: 100px;">Добавить карточку</button>
+        `
         )
     }
 
