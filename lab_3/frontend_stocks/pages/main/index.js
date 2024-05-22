@@ -5,6 +5,8 @@ import {CreateProductPage} from "../create";
 import {urls} from "../../modules/urls.js";
 import {ajax} from "../../modules/ajax.js";
 import {ProductCardComponent} from "../../components/product-card";
+import {ajax_meteo} from "../../modules/ajax_meteo.js";
+import {MeteoComponent} from "../../components/meteo";
 
 
 export class MainPage {
@@ -25,6 +27,19 @@ export class MainPage {
         )
     }
 
+    getMeteoDataMain(){
+
+        /*const meteoComponent = new MeteoComponent(this.parent);
+        ajax.get(urls.getMeteoData())
+            .then(data => {
+                console.log(data); // Выводим полученные данные в консоль
+                meteoComponent.render(data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation: ', error);
+            });*/
+        ajax_meteo.get(urls.getMeteoData())
+    }
 
     getData() {
         ajax.get(urls.getStocks())
@@ -79,7 +94,7 @@ export class MainPage {
         const html = this.getHTML()
         this.parent.insertAdjacentHTML('beforeend', html)
 
-
+        this.getMeteoDataMain()
         this.getData()
     }
 }
